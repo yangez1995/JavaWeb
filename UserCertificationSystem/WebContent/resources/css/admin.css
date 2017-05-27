@@ -1,0 +1,96 @@
+td button {
+	margin-left: 5px;
+	margin-right: 5px;
+	border: #BFBFBF solid 1px;
+	border-radius: 5px;
+	background: #FCFCFC;
+	font-family: Microsoft YaHei;
+	width: 60px;
+}
+
+td button:hover {
+	background: #BFBFBF;
+	color: #FCFCFC
+}
+
+.hide {
+	display: block;
+}
+
+#breadcrumb {
+	background: #444444;
+}
+
+#breadcrumb li {
+	color: #CCCCCC;
+	cursor: default;
+}
+
+#breadcrumb .active {
+	color: #FCFCFC;
+	cursor: default;
+}
+
+.custom-nav-on {
+	width: 100%;
+	height: 60px;
+	background: #444455;
+	border: 0px;
+	cursor: pointer;
+}
+
+.custom-nav-on img {
+	width: 30px;
+	height: 30px;
+	float: left;
+	margin-left: 20px;
+	margin-top: 15px;
+}
+
+.custom-nav-on span {
+	float: left;
+	margin-left: 20px;
+	line-height: 60px;
+	font-family: Microsoft YaHei;
+	font-size: 18px;
+	color: #FCFCFC;
+}
+
+.custom-nav-off {
+	width: 100%;
+	height: 60px;
+	background: #555566;
+	border: 0px;
+	cursor: pointer;
+}
+
+.custom-nav-off img {
+	width: 30px;
+	height: 30px;
+	float: left;
+	margin-left: 20px;
+	margin-top: 15px;
+}
+
+.custom-nav-off span {
+	float: left;
+	margin-left: 20px;
+	line-height: 60px;
+	font-family: Microsoft YaHei;
+	font-size: 18px;
+	color: #BFBFBF;
+}
+
+.select {
+	width: 100%;
+	height: 100%;
+	background: rgba(255,255,255,0);
+	border: 0px;
+	-webkit-appearance:none;
+	   -moz-appearance:none; 
+	        appearance:none;
+}
+
+.pagination li {
+	cursor: pointer;
+}

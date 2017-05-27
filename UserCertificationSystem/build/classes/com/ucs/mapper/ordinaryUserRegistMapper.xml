@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.ucs.dao.OrdinaryUserRegistMapper">
+	<insert id="userRegist">
+		INSERT INTO t_ordinary_user
+		(username,nickname,password,role_id,state) 
+		VALUE (#{username, jdbcType=VARCHAR}, #{nickname, jdbcType=VARCHAR},#{password, jdbcType=VARCHAR},#{role, jdbcType=VARCHAR},#{state, jdbcType=INTEGER})
+		<selectKey resultType="int" keyProperty="id">
+    		SELECT LAST_INSERT_ID()
+    	</selectKey>
+	</insert>
+	
+	<select id="checkUsernameRepeat" resultType="int">
+		SELECT COUNT(*) FROM t_ordinary_user
+		WHERE username = #{username, jdbcType=VARCHAR}
+	</select>
+</mapper>

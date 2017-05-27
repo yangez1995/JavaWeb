@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.ucs.dao.OrdinaryUserUpdateMapper">
+	<update id="updateAll" parameterType="com.ucs.model.OrdinaryUser">
+		UPDATE t_ordinary_user 
+		SET username = #{username, jdbcType=VARCHAR},password = #{password, jdbcType=VARCHAR},
+		nickname = #{nickname, jdbcType=VARCHAR},state = #{state, jdbcType=INTEGER}
+		WHERE id = #{id, jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateUsername">
+		UPDATE t_ordinary_user 
+		SET username = #{username, jdbcType=VARCHAR}
+		WHERE id = #{id, jdbcType=INTEGER}
+	</update>
+	 
+	<update id="updatePassword">
+		UPDATE t_ordinary_user 
+		SET password = #{password, jdbcType=VARCHAR}
+		WHERE id = #{id, jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateNickname">
+		UPDATE t_ordinary_user 
+		SET nickname = #{nickname, jdbcType=VARCHAR}
+		WHERE id = #{id, jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateState">
+		UPDATE t_ordinary_user 
+		SET state = #{state, jdbcType=INTEGER}
+		WHERE id = #{id, jdbcType=INTEGER}
+	</update>
+</mapper>

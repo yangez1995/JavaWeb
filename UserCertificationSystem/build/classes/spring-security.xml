@@ -1,0 +1,39 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:security="http://www.springframework.org/schema/security"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+               http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+            http://www.springframework.org/schema/security 
+            http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+            
+	<security:http pattern="/resources/**" security="none"/>
+	<security:http pattern="/userLogin" security="none"/>
+	<security:http pattern="/userRegist" security="none"/>
+	
+	<security:http auto-config="true" use-expressions="true">
+		<security:intercept-url pattern="/admin" access="hasAnyRole('ROLE_MANAGE_ADMIN','ROLE_MANAGE_USER_ACCOUNT','ROLE_UPDATE_USER_MESSAGE')"/>
+		<security:intercept-url pattern="/getUserAccount" access="hasAnyRole('ROLE_MANAGE_ADMIN','ROLE_MANAGE_USER_ACCOUNT')"/>
+	
+		<security:form-login login-page="/userLogin" default-target-url="/admin" authentication-failure-url="/loginError" always-use-default-target="true" />   
+		<security:csrf disabled="true"/>
+		<security:access-denied-handler ref="accessDeniedHandler"/>
+	</security:http>
+	
+	<security:authentication-manager>          
+    	<security:authentication-provider ref="authenticationProvider"/>
+	</security:authentication-manager>  
+  
+	<bean id="authenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">  
+	    <property name="hideUserNotFoundExceptions" value="false" />  
+	    <property name="userDetailsService" ref="userDetailsServiceImpl" />
+	    <property name="passwordEncoder" ref="BCryptPasswordEncoder"/>
+	</bean>
+	
+	<bean id="userDetailsServiceImpl" class="com.ucs.security.UserDetailServiceImpl" />
+	
+	<bean id="accessDeniedHandler" class="com.ucs.security.AccessDeniedHandlerImpl"/>
+	 
+	<bean id="BCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<constructor-arg name="strength" value="9"/>
+	</bean>
+</beans>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.ucs.dao.OrdinaryUserMessageInsertMapper">
+	<insert id="newUser">
+		INSERT INTO t_ordinary_user_message
+		(user_id,phone_number,email) 
+		VALUE (#{id, jdbcType=INTEGER}, #{phoneNumber, jdbcType=VARCHAR},#{email, jdbcType=VARCHAR})
+	</insert>
+</mapper>
